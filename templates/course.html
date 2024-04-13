@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ course.title }}{% endblock %}
+
+{% block content %}
+    <h1>{{ course.title }}</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Video Links</th>
+                <th>PDF Link</th>
+                <th>Summarized PDF</th>
+                <th>Quiz</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for module in course.modules %}
+            <tr>
+                <td>{{ module.title }}</td>
+                <td><a href="{{ url_for('video', course_id=course_id, module_id=loop.index0) }}">Video Link</a></td>
+                <td><a href="{{ module.pdf_link }}">PDF Link</a></td>
+                <td><a href="{{ url_for('summary_pdf', course_id=course_id, module_id=loop.index0) }}">Summarized PDF</a></td>
+                <td><a href="{{ url_for('quiz', course_id=course_id, module_id=loop.index0) }}" class="btn btn-primary">Take Quiz</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

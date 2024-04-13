@@ -1,0 +1,77 @@
+{% block content %}
+    
+    <title>Summary</title>
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    .card {
+        width: 80%;
+        height: 80%;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: left;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+
+    p {
+        margin-bottom: 20px;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .form-select {
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+    }
+
+    input[type="submit"] {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 8px 16px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Summary</h1>
+        <p>{{ summary }}</p>
+        <form action="{{ url_for('summary_pdf', course_id=course_id, module_id=module_id) }}" method="get">
+            <select name="lang" class="form-select mb-2">
+                {% for lang_code, lang_name in languages.items() %}
+                <option value="{{ lang_code }}">{{ lang_name }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Translate">
+        </form>
+        
+    </div>
+</body>
+    
+{% endblock %}

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+    <!-- CSS here -->
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="static/css/slicknav.css">
+    <link rel="stylesheet" href="static/css/flaticon.css">
+    <link rel="stylesheet" href="static/css/progressbar_barfiller.css">
+    <link rel="stylesheet" href="static/css/gijgo.css">
+    <link rel="stylesheet" href="static/css/animate.min.css">
+    <link rel="stylesheet" href="static/css/animated-headline.css">
+    <link rel="stylesheet" href="static/css/magnific-popup.css">
+    <link rel="stylesheet" href="static/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="static/css/themify-icons.css">
+    <link rel="stylesheet" href="static/css/slick.css">
+    <link rel="stylesheet" href="static/css/nice-select.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <title>Student List</title>
+    <style>
+        body {
+            background-image: url('static/img/hero/hero2.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: top;
+        }
+        .table-container {
+            margin-left: 280px; /* Center the table */
+        }
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin-bottom: 20px;
+        }
+        td{
+            color:black;
+        }
+        th, td {
+            border: 1px solid #dddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #BCBCBC;
+            margin-right: 30px;
+            color: #000000;
+        }
+        h3{
+            color: #ffffff;
+        }
+        h2{
+            text-align: center;
+            padding: 0px;
+            color: #ffffff;
+            margin-top:120px;
+        }
+    </style>
+</head>
+<header>
+    <!-- Header Start -->
+    <div class="header-area header-transparent">
+        <div class="main-header ">
+            <div class="header-bottom  header-sticky">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <!-- Logo -->
+                        <div class="col-xl-2 col-lg-2">
+                            <div class="logo">
+                                <a href="/faculty_dashboard"><img src="static/img/logo/logo.png" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-xl-10 col-lg-10">
+                            <div class="menu-wrapper d-flex align-items-center justify-content-end">
+                                <!-- Main-menu -->
+                                <div class="main-menu d-none d-lg-block">
+                                    <nav>
+                                        <ul id="navigation">
+                                            <li class="active"><a href="/faculty_dashboard">Home</a></li>
+                                            <li><a href="/add_course">Add Course</a>
+                                            </li>
+                                            <li><a href="/students">View Students</a></li>
+                                            <!-- Button -->
+                                            <li class="button-header"><a href="/logout"
+                                                    class="btn btn3">Log Out</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Mobile Menu -->
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+</header>
+<body>
+    <h2>STUDENT LIST</h2>
+
+    <div class="table-container">
+        <h3>Class 1A</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students_1A %}
+                <tr>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.score }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-container">
+        <h3>Class 1B</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students_1B %}
+                <tr>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.score }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-container">
+        <h3>Class 10A</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students_10A %}
+                <tr>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.score }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-container">
+        <h3>Class 10B</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students_10B %}
+                <tr>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.score }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+<footer>
+    <div class="footer-wrappper footer-bg">
+        <!-- Footer Start-->
+        <div class="footer-area footer-padding">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col-xl-4 col-lg-5 col-md-4 col-sm-6">
+                        <div class="single-footer-caption mb-50">
+                            <div class="single-footer-caption mb-30">
+                                <!-- logo -->
+                                <div class="footer-logo mb-25">
+                                    <a href="index.html"><img src="static/img/logo/logo2_footer.png" alt=""></a>
+                                </div>
+                                <div class="footer-tittle">
+                                    <div class="footer-pera">
+                                        <p>The automated process starts here.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- footer-bottom area -->
+                    <div class="footer-bottom-area">
+                        <div class="container">
+                            <div class="footer-border">
+                                <div class="row d-flex align-items-center">
+                                    <div class="col-xl-12 ">
+                                        <div class="footer-copy-right text-center">
+                                            <p>
+                                                Copyright &copy;
+                                                <script>
+                                                    document.write(new Date().getFullYear());
+                                                </script> All rights reserved
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Footer End-->
+                </div>
+</footer>
+<!-- Scroll Up -->
+<div id="back-top">
+    <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+</div>
+</html>

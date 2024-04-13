@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Process Form Data</title>
+    <script>
+        function processForm(action) {
+            var form = document.getElementById("myForm");
+            var checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');
+            var rollNos = Array.from(checkboxes).map(function(checkbox) {
+                return checkbox.value;
+            });
+            var formData = new FormData();
+            formData.append("action", action);
+            formData.append("rollNos", rollNos.join(","));
+            
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // Redirect to the page after processing
+                        window.location.href = "admin_student_requests.html";
+                    } else {
+                        console.error("Error processing form: " + xhr.statusText);
+                    }
+                }
+            };
+            xhr.open("POST", "process_data.html");
+            xhr.send(formData);
+        }
+    </script>
+</head>
+<body>
+    <form id="myForm">
+        <!-- Your form content here -->
+        <input type="checkbox" name="ad" value="1"> Student 1<br>
+        <input type="checkbox" name="ad" value="2"> Student 2<br>
+        <input type="checkbox" name="ad" value="3"> Student 3<br>
+        <input type="button" value="Accept Request" onclick="processForm('accept')">
+        <input type="button" value="Delete Requests" onclick="processForm('reject')">
+    </form>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Video</title>
+</head>
+<body>
+    <h1>Upload Video</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="video">
+        <button type="submit">Upload</button>
+    </form>
+
+    <h2>Uploaded Video</h2>
+    <video controls>
+        <source src="/uploads/<%= videoFilename %>" id="uploadedVideo" type="video/mp4">
+    </video>
+
+    <script>
+        // Update the video source when a file is selected
+        document.querySelector('input[type="file"]').addEventListener('change', function() {
+            const file = this.files[0];
+            const video = document.getElementById('uploadedVideo');
+            const url = URL.createObjectURL(file);
+            video.src = url;
+        });
+    </script>
+</body>
+</html>

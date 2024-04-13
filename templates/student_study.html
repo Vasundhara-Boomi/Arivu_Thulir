@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <h1>Available Courses</h1>
+    <div class="row">
+        {% for course in courses %}
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ course.title }}</h5>
+                    <p class="card-text">Standard: {{ course.standard }}</p>
+                    <p class="card-text">Description: {{ course.description }}</p>
+                    <p class="card-text">Number of Modules: {{ course.modules|length }}</p>
+                    <a href="{{ url_for('course', course_id=loop.index0) }}" class="btn btn-primary">View Course</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

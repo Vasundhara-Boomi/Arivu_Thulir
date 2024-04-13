@@ -1,0 +1,49 @@
+
+{% extends 'base.html' %}
+
+{% block title %}{{ course.title }}{% endblock %}
+
+{% block content %}
+    
+    <div class="row">
+        <!-- Video Player Section -->
+        <div class="col-md-8">
+            <h2>Video</h2>
+            <video controls autoplay loop class="w-100">
+                <source src="{{ url_for('static', filename=module.video_link) }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <!-- Sign Language Section -->
+        
+    </div>
+    <!-- Notes Download Section -->
+    <div class="row mt-4">
+        <div class="col">
+            <h2>Download Notes</h2>
+            <p>Choose your language:</p>
+            <select name="lang" class="form-select mb-2">
+                {% for lang_code, lang_name in languages.items() %}
+                <option value="{{ lang_code }}">{{ lang_name }}</option>
+                {% endfor %}
+            </select>
+            <button class="btn btn-primary">Download Notes</button>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <h2>Transcript in Multiple Languages</h2>
+        <form action="{{ url_for('transcribe', course_id=course_id, module_id=module_id) }}" method="post">
+            <select name="lang" class="form-select mb-2">
+                {% for lang_code, lang_name in languages.items() %}
+                <option value="{{ lang_code }}">{{ lang_name }}</option>
+                {% endfor %}
+            </select>
+            <input type="hidden" name="video_path" value="{{ url_for('static', filename=module.video_link) }}">
+            <input type="submit" value="Transcribe" class="btn btn-primary">
+        </form>
+        <p>Transcript:</p>
+        <p>{{ transcript }}</p>
+    </div>
+    
+    
+    {% endblock %}
